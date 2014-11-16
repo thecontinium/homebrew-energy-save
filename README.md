@@ -1,2 +1,2 @@
-homebrew-wakeup
-===============
+homebrew-wakeup-scheduler
+=========================
