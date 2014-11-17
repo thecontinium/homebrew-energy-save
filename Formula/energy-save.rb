@@ -1,13 +1,14 @@
-class WakeupScheduler< Formula
-  homepage 'https://github.com/thecontinium/homebrew-wakeup-scheduler/'
-  url 'https://github.com/thecontinium/homebrew-wakeup-scheduler.git'
-  version '0.0.4'
+class EnergySave< Formula
+  homepage 'https://github.com/thecontinium/homebrew-energy-save/'
+  url 'https://github.com/thecontinium/homebrew-energy-save.git'
+  version '0.0.1'
 
   skip_clean 'bin'
 
 
   def install
-    bin.install 'wakeup-scheduler'
+    bin.install 'wakeup-scheduler'  
+    bin.install 'shutdown-scheduler'
   end
 
   plist_options :startup => true
