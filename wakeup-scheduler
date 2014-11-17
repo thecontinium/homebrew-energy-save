@@ -1,0 +1,55 @@
+#!/bin/bash
+# pmset script
+
+function usage
+{
+echo "Usage: [-h | --help] | [ [--midnight] [--morning] [--afternoon] ]"
+}
+
+if [ $(id -u) = "0" ]; then
+echo
+else
+usage
+echo "Must be run as root..."
+exit 1
+fi
+
+# Reset our go-to-sleep pmset prefs just for fun.
+# This can lead to a lot of confusion if someone tries
+# to change things through the prefs panel.
+#
+# womp 1 == wake on magic packet
+# displaysleep 0 == Don't waste effort trying to dim the display
+# sleep 30 == sleep the system after 30 minutes of idle
+# disksleep 3 == spin down HD after idle period
+# autorestart 1 == restart after AC outage
+
+pmset -a womp 1 disksleep 3 displaysleep 0 autorestart 1 sleep 30 2> /dev/null
+
+mode=
+
+case $1 in
+--midnight ) mode=1
+;;
+--morning ) mode=2
+;;
+--afternoon ) mode=3
+;;
+-h | --help ) usage
+exit
+;;
+* ) usage
+exit 1
+esac
+
+if [ "$mode" = "1" ]; then
+pmset repeat wakeorpoweron MTWRFSU 08:00:00
+fi
+if [ "$mode" = "2" ]; then
+pmset repeat wakeorpoweron MTWRFSU 16:00:00
+fi
+if [ "$mode" = "3" ]; then
+pmset repeat wakeorpoweron MTWRFSU 00:00:00
+fi
+
+exit
