@@ -1,7 +1,7 @@
 class WakeupScheduler< Formula
   homepage 'https://github.com/thecontinium/homebrew-wakeup-scheduler/'
   url 'https://github.com/thecontinium/homebrew-wakeup-scheduler.git'
-  version '0.0.1'
+  version '0.0.2'
 
   skip_clean 'bin'
 
