@@ -1,7 +1,7 @@
 class WakeupScheduler< Formula
   homepage 'https://github.com/thecontinium/homebrew-wakeup-scheduler/'
   url 'https://github.com/thecontinium/homebrew-wakeup-scheduler.git'
-  version '0.0.3'
+  version '0.0.4'
 
   skip_clean 'bin'
 
@@ -25,6 +25,8 @@ class WakeupScheduler< Formula
       <array>
         <string>/usr/local/bin/wakeup-scheduler</string>
       </array>
+      <key>RunAtLoad</key>
+      <true/>
       <key>StandardErrorPath</key>
       <string>/tmp/#{plist_name}.err</string>
       <key>StandardOutPath</key>
