@@ -1,5 +1,4 @@
 #!/bin/bash
-# pmset script
 
 if [ -z $1 ]; then
   shutdown_time="00:10:00"

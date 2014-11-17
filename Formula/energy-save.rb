@@ -12,6 +12,8 @@ class EnergySave< Formula
     prefix.install Dir["config/*.plist"]
   end
 
+  plist_options :startup => true
+  
   def caveats; <<-EOS.undent
 
       #{Dir["#{prefix}/*.plist"].join("\n      ")}
