@@ -21,12 +21,11 @@ fi
 #
 # womp 1 == wake on magic packet
 # displaysleep 0 == Don't waste effort trying to dim the display
-# sleep 30 == sleep the system after 30 minutes of idle
+# sleep 15 == sleep the system after 15 minutes of idle
 # disksleep 3 == spin down HD after idle period
 # autorestart 1 == restart after AC outage
 
-pmset -a womp 1 disksleep 3 displaysleep 0 autorestart 1 sleep 30 2> /dev/null
-
+pmset -a womp 1 disksleep 3 displaysleep 0 autorestart 1 sleep 15 2> /dev/null
 
 pmset repeat wakeorpoweron MTWRFSU $hour:00:00 shutdown MTWRFSU $shutdown_time
 
