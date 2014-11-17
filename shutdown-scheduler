@@ -1,20 +1,6 @@
 #!/bin/bash
 # pmset script
 
-hour=`date +"%H"`
-
-if [ "$hour" -ge "16" ];
-then
-  hour=0
-else
-  if [ "$hour" -ge "8" ];
-  then
-    hour=16
-  else
-    hour=07
-  fi
-fi
-
 if [ -z $1 ]; then
   shutdown_time="00:10:00"
 else
@@ -37,7 +23,6 @@ fi
 # autorestart 1 == restart after AC outage
 
 pmset -a womp 1 disksleep 3 displaysleep 15 autorestart 1 sleep 15 2> /dev/null
-
-pmset repeat wakeorpoweron MTWRFSU $hour:00:00 shutdown MTWRFSU $shutdown_time
+pmset repeat wakeorpoweron MTWRFSU 00:00:00 shutdown MTWRFSU $shutdown_time
 
 exit
