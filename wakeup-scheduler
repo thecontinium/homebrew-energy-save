@@ -11,7 +11,7 @@ else
 fi
 
 if [ $(id -u) = "0" ]; then
-echo "Setting wakeorpoweron to " $hour " and will shutdown at " $shutdown_time
+echo "Setting wake or power on to" $hour "and shutdown to" $shutdown_time
 else
 echo "Must be run as root..."
 exit 1
