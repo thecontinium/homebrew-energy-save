@@ -4,7 +4,7 @@
 hour=`date +"%H"`
 let hour+=8
 
-if [ ! -z $1 ]; then
+if [ -z $1 ]; then
   shutdown_time="00:10:00"
 else
   shutdown_time=$1
