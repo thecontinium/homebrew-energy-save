@@ -30,7 +30,6 @@ class WakeupScheduler< Formula
       <string>/tmp/#{plist_name}.err</string>
       <key>StandardOutPath</key>
       <string>/tmp/#{plist_name}.out</string>
-      <string>/tmp/homebrew.mxcl.brew-update.out</string>
       <key>StartCalendarInterval</key>
       <array>
         <dict>
@@ -42,7 +41,10 @@ class WakeupScheduler< Formula
       </array>
     </dict>
     </plist>
-
     EOS
   end
 end
+
+
+
+:e 
