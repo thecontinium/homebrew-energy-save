@@ -38,35 +38,15 @@ class WakeupScheduler< Formula
           <key>Minute</key>
           <integer>1</integer>
         </dict>
-      </array>
-    </dict>
-    </plist>
-    EOS
-  end
-  
-  def plist2; <<-EOS.undent
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-      <key>AbandonProcessGroup</key>
-      <true/>
-      <key>Label</key>
-      <string>#{plist_name}2</string>
-      <key>ProgramArguments</key>
-      <array>
-        <string>/usr/local/bin/wakeup-scheduler</string>
-        <string>--morining</string>
-      </array>
-      <key>StandardErrorPath</key>
-      <string>/tmp/#{plist_name}2.err</string>
-      <key>StandardOutPath</key>
-      <string>/tmp/#{plist_name}2.out</string>
-      <key>StartCalendarInterval</key>
-      <array>
         <dict>
           <key>Hour</key>
           <integer>8</integer>
+          <key>Minute</key>
+          <integer>1</integer>
+        </dict>
+        <dict>
+          <key>Hour</key>
+          <integer>16</integer>
           <key>Minute</key>
           <integer>1</integer>
         </dict>
@@ -77,6 +57,46 @@ class WakeupScheduler< Formula
   end
 end
 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AbandonProcessGroup</key>
+	<true/>
+	<key>Label</key>
+	<string>homebrew.mxcl.wakeup-scheduler</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/bin/wakeup-scheduler</string>
+		<string>--midnight</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/tmp/homebrew.mxcl.wakeup-scheduler.err</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/homebrew.mxcl.wakeup-scheduler.out</string>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Hour</key>
+			<integer>0</integer>
+			<key>Minute</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>8</integer>
+			<key>Minute</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>16</integer>
+			<key>Minute</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
 
 
 :e 
