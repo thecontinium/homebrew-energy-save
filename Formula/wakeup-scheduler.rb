@@ -43,6 +43,38 @@ class WakeupScheduler< Formula
     </plist>
     EOS
   end
+  
+  def plist2; <<-EOS.undent
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+      <key>AbandonProcessGroup</key>
+      <true/>
+      <key>Label</key>
+      <string>#{plist_name}2</string>
+      <key>ProgramArguments</key>
+      <array>
+        <string>/usr/local/bin/wakeup-scheduler</string>
+        <string>--morining</string>
+      </array>
+      <key>StandardErrorPath</key>
+      <string>/tmp/#{plist_name}2.err</string>
+      <key>StandardOutPath</key>
+      <string>/tmp/#{plist_name}2.out</string>
+      <key>StartCalendarInterval</key>
+      <array>
+        <dict>
+          <key>Hour</key>
+          <integer>8</integer>
+          <key>Minute</key>
+          <integer>1</integer>
+        </dict>
+      </array>
+    </dict>
+    </plist>
+    EOS
+  end
 end
 
 
