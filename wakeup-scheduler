@@ -2,7 +2,18 @@
 # pmset script
 
 hour=`date +"%H"`
-let hour+=8
+
+if [ "$hour" -ge "16" ];
+then
+  hour=0
+else
+  if [ "$hour" -ge "8" ];
+  then
+    hour=16
+  else
+    hour=07
+  fi
+fi
 
 if [ -z $1 ]; then
   shutdown_time="00:10:00"

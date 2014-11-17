@@ -1,7 +1,7 @@
 class WakeupScheduler< Formula
   homepage 'https://github.com/thecontinium/homebrew-wakeup-scheduler/'
   url 'https://github.com/thecontinium/homebrew-wakeup-scheduler.git'
-  version '0.0.2'
+  version '0.0.3'
 
   skip_clean 'bin'
 
@@ -39,7 +39,7 @@ class WakeupScheduler< Formula
         </dict>
         <dict>
           <key>Hour</key>
-          <integer>8</integer>
+          <integer>7</integer>
           <key>Minute</key>
           <integer>1</integer>
         </dict>
