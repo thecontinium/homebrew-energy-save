@@ -23,7 +23,7 @@ class WakeupScheduler< Formula
       <string>#{plist_name}</string>
       <key>ProgramArguments</key>
       <array>
-        <string>/usr/local/bin/wakeup</string>
+        <string>/usr/local/bin/wakeup-scheduler</string>
         <string>--midnight</string>
       </array>
       <key>StandardErrorPath</key>
