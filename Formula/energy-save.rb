@@ -1,7 +1,7 @@
 class EnergySave< Formula
   homepage 'https://github.com/thecontinium/homebrew-energy-save/'
   url 'https://github.com/thecontinium/homebrew-energy-save.git'
-  version '0.0.1'
+  version '0.0.2'
 
   skip_clean 'bin'
 
@@ -13,12 +13,5 @@ class EnergySave< Formula
   end
 
   plist_options :startup => true
-  
-  def caveats; <<-EOS.undent
-
-      #{Dir["#{prefix}/*.plist"].join("\n      ")}
-
-    EOS
-  end
 
 end
