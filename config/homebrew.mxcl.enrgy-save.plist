@@ -7,17 +7,17 @@
 	<key>Disabled</key>
 	<false/>
 	<key>Label</key>
-	<string>homebrew.mxcl.shutdown-scheduler</string>
+	<string>homebrew.mxcl.energy-save</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/usr/local/bin/shutdown-scheduler</string>
+		<string>/usr/local/bin/energy-save</string>
 		<string>00:05:00</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardErrorPath</key>
-	<string>/tmp/homebrew.mxcl.shutdown-scheduler.err</string>
+	<string>/tmp/homebrew.mxcl.energy-save.err</string>
 	<key>StandardOutPath</key>
-	<string>/tmp/homebrew.mxcl.shutdown-scheduler.out</string>
+	<string>/tmp/homebrew.mxcl.energy-save.out</string>
 </dict>
 </plist>

@@ -1,14 +1,13 @@
 class EnergySave< Formula
   homepage 'https://github.com/thecontinium/homebrew-energy-save/'
   url 'https://github.com/thecontinium/homebrew-energy-save.git'
-  version '0.0.2'
+  version '0.0.5'
 
   skip_clean 'bin'
 
 
   def install
-    bin.install 'wakeup-scheduler'  
-    bin.install 'shutdown-scheduler'
+    bin.install 'energy-save'  
     prefix.install Dir["config/*.plist"]
   end
 

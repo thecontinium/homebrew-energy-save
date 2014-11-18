@@ -1,0 +1,60 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+  shutdown_time="00:10:00"
+else
+  shutdown_time=$1
+fi
+
+if [ -z $2 ]; then
+  poweron_time="07:00:00"
+else
+  poweron_time=$1
+fi
+let wakeup_hour=`echo $shutdown_time | cut -d":" -f 1`
+let wakeup_minute=`echo $shutdown_time | cut -d":" -f 2`
+let wakeup_second=`echo $shutdown_time | cut -d":" -f 3`
+let wakeup_minute-=5
+if [ $wakeup_minute -lt "0" ]; then
+  echo "Shutdown time must be at least 5 minutes after the hour"
+  exit 1
+fi
+formated_wakeup_time=$wakeup_hour:$wakeup_minute:$wakeup_second
+
+
+time_now=`date +%H`
+time_wakeup=$wakeup_hour
+
+today=`date +%m/%d/%Y`
+tomorrow=`date -v+1d +%m/%d/%Y`
+
+echo $time_now
+echo $time_wakeup
+
+if [ $time_now -lt $time_wakeup ]; then
+  wakeup_schhedule_date="$today $formated_wakeup_time"
+else
+  wakeup_schhedule_date="$tomorrow $formated_wakeup_time"
+fi
+
+
+if [ $(id -u) = "0" ]; then
+echo Setting regular wake or power-on to $poweron_time and shutdown to $shutdown_time, and scheduling wakup at $wakeup_schhedule_date
+else
+echo "Must be run as root..."
+exit 1
+fi
+
+# Reset our go-to-sleep pmset prefs
+#
+# womp 1 == wake on magic packet
+# displaysleep 15 == display sleep after 15 minutes
+# sleep 15 == sleep the system after 15 minutes of idle
+# disksleep 3 == spin down HD after idle period
+# autorestart 1 == restart after AC outage
+
+pmset -a womp 1 disksleep 3 displaysleep 15 autorestart 1 sleep 15
+pmset repeat wakeorpoweron MTWRFSU $poweron_time shutdown MTWRFSU $shutdown_time
+pmset schedule wake "$wakeup_schhedule_date"
+
+exit
