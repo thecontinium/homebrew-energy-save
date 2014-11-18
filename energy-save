@@ -21,16 +21,12 @@ if [ $wakeup_minute -lt "0" ]; then
 fi
 formated_wakeup_time=$wakeup_hour:$wakeup_minute:$wakeup_second
 
-
-time_now=`date +%H`
-time_wakeup=$wakeup_hour
-
 today=`date +%m/%d/%Y`
 tomorrow=`date -v+1d +%m/%d/%Y`
 
-echo $time_now
-echo $time_wakeup
-
+# This comparison should be better
+time_now=`date +%H`
+time_wakeup=$wakeup_hour
 if [ $time_now -lt $time_wakeup ]; then
   wakeup_schhedule_date="$today $formated_wakeup_time"
 else
