@@ -49,7 +49,7 @@ fi
 # disksleep 3 == spin down HD after idle period
 # autorestart 1 == restart after AC outage
 
-pmset -a womp 1 disksleep 3 displaysleep 15 autorestart 1 sleep 15
+pmset -a womp 1 disksleep 3 displaysleep 15 autorestart 1
 pmset repeat wakeorpoweron MTWRFSU $poweron_time shutdown MTWRFSU $shutdown_time
 pmset schedule wake "$wakeup_schhedule_date"
 
