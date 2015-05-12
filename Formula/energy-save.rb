@@ -1,7 +1,7 @@
 class EnergySave< Formula
   homepage 'https://github.com/thecontinium/homebrew-energy-save/'
   url 'https://github.com/thecontinium/homebrew-energy-save.git'
-  version '0.0.5'
+  version '0.0.6'
 
   skip_clean 'bin'
 
