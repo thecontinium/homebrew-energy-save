@@ -7,15 +7,15 @@ else
 fi
 
 if [ -z $2 ]; then
-  poweron_time="07:00:00"
+  shutdown_days="MTWRF"
 else
-  poweron_time=$1
+  shutdown_days=$2
 fi
 
 if [ -z $3 ]; then
-  shutdown_days="MTWRFSU"
+  poweron_time="07:00:00"
 else
-  shutdown_days=$3
+  poweron_time=$3
 fi
 
 let wakeup_hour=`echo $shutdown_time | cut -d":" -f 1`
