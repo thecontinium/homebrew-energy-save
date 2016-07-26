@@ -11,6 +11,13 @@ if [ -z $2 ]; then
 else
   poweron_time=$1
 fi
+
+if [ -z $3 ]; then
+  shutdown_days="MTWRFSU"
+else
+  shutdown_days=$3
+fi
+
 let wakeup_hour=`echo $shutdown_time | cut -d":" -f 1`
 let wakeup_minute=`echo $shutdown_time | cut -d":" -f 2`
 let wakeup_second=`echo $shutdown_time | cut -d":" -f 3`
@@ -35,7 +42,7 @@ fi
 
 
 if [ $(id -u) = "0" ]; then
-echo Setting regular wake or power-on to $poweron_time and shutdown to $shutdown_time, and scheduling wakup at $wakeup_schhedule_date
+echo Setting regular wake or power-on to $poweron_time and shutdown to $shutdown_time, $shutdown_days, and scheduling wakup at $wakeup_schhedule_date
 else
 echo "Must be run as root..."
 exit 1
@@ -49,8 +56,8 @@ fi
 # disksleep 3 == spin down HD after idle period
 # autorestart 1 == restart after AC outage
 
-pmset -a womp 1 disksleep 3 displaysleep 15 autorestart 1
-pmset repeat wakeorpoweron MTWRFSU $poweron_time shutdown MTWRFSU $shutdown_time
+pmset -a womp 1 disksleep 3 displaysleep 10 autorestart 1 sleep 15
+pmset repeat wakeorpoweron MTWRFSU $poweron_time shutdown $shutdown_days $shutdown_time
 pmset schedule wake "$wakeup_schhedule_date"
 
 exit
