@@ -18,6 +18,41 @@ else
   poweron_time=$3
 fi
 
+if [ -z $4 ]; then
+  # displaysleep 15 == display sleep after 15 minutes
+  display_sleep="15"
+else
+  display_sleep=$4
+fi
+
+if [ -z $5 ]; then
+  # sleep 15 == sleep the system after 15 minutes of idle
+  sleep="15"
+else
+  sleep=$5
+fi
+
+if [ -z $6 ]; then
+  # disksleep 3 == spin down HD after idle period
+  disk_sleep="3"
+else
+  disk_sleep=$6
+fi
+
+if [ -z $7 ]; then
+  autorestart 1 == restart after AC outage
+  auto_restart="1"
+else
+  disk_sleep=$7
+fi
+
+if [ -z $8 ]; then
+  # womp 1 == wake on magic packet
+  womp="1"
+else
+  womp=$8
+fi
+
 let wakeup_hour=`echo $shutdown_time | cut -d":" -f 1`
 let wakeup_minute=`echo $shutdown_time | cut -d":" -f 2`
 let wakeup_second=`echo $shutdown_time | cut -d":" -f 3`
@@ -40,23 +75,13 @@ else
   wakeup_schhedule_date="$tomorrow $formated_wakeup_time"
 fi
 
-
 if [ $(id -u) = "0" ]; then
 echo Setting regular wake or power-on to $poweron_time and shutdown to $shutdown_time, $shutdown_days, and scheduling wakup at $wakeup_schhedule_date
 else
 echo "Must be run as root..."
 exit 1
 fi
-
-# Reset our go-to-sleep pmset prefs
-#
-# womp 1 == wake on magic packet
-# displaysleep 15 == display sleep after 15 minutes
-# sleep 15 == sleep the system after 15 minutes of idle
-# disksleep 3 == spin down HD after idle period
-# autorestart 1 == restart after AC outage
-
-pmset -a womp 1 disksleep 3 displaysleep 10 autorestart 1 sleep 15
+pmset -a womp $womp disksleep $disk_sleep displaysleep $display_sleep autorestart $auto_restart sleep $sleep
 pmset repeat wakeorpoweron MTWRFSU $poweron_time shutdown $shutdown_days $shutdown_time
 pmset schedule wake "$wakeup_schhedule_date"
 
