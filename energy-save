@@ -40,7 +40,7 @@ else
 fi
 
 if [ -z $7 ]; then
-  autorestart 1 == restart after AC outage
+  # autorestart 1 == restart after AC outage
   auto_restart="1"
 else
   auto_restart=$7
